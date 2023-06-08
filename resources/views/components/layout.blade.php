@@ -15,7 +15,7 @@
         @vite('resources/css/app.css')
         <title>Work Bridge | Find Jobs & Projects</title>
     </head>
-    <body class="flex flex-col h-screen justify-between">
+    <body {{$attributes->merge(['class' => 'flex flex-col h-screen justify-between'])}}>
 
         @include('partials._header')
 
