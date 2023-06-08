@@ -36,7 +36,7 @@
         </nav>
 
     <main class="mb-auto">
-        @yield('content')
+        {{ $slot }}
     </main>
 
     <footer
