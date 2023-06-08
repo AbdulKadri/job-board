@@ -4,7 +4,7 @@
     <p>Copyright &copy; 2023, All Rights reserved</p>
 
     <a
-        href="create.html"
+        href="/listings/create"
         class="absolute right-32 bg-secondary text-white min-w-min py-3 px-5 hidden md:block">
         Post Job
     </a>
