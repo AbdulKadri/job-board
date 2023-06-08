@@ -7,7 +7,7 @@
 ><i class="fa-solid fa-arrow-left"></i> Back
 </a>
 <div class="mx-4">
-<div class="bg-gray-50 border border-gray-200 p-10 rounded">
+<x-card class="p-10">
     <div
         class="flex flex-col items-center justify-center text-center"
     >
@@ -19,15 +19,8 @@
 
         <h3 class="text-2xl mb-2">{{ $listing->title }}</h3>
         <div class="text-xl font-bold mb-4">{{ $listing->company }}</div>
-        <ul class="flex">
-            @foreach(explode(', ', $listing->tags) as $tag)
-                <li
-                    class="flex items-center justify-center bg-secondary text-white rounded-xl px-3 py-1 mr-2"
-                >
-                    <a href="#">{{ strtoupper($tag) }}</a>
-                </li>
-            @endforeach
-        </ul>
+        <x-listing-tags :tagsCsv="$listing->tags" />
+
         <div class="text-lg my-4">
             <i class="fa-solid fa-location-dot"></i> {{ $listing->location }}
         </div>
@@ -41,7 +34,7 @@
 
                 <a
                     href="mailto:{{ $listing->email }}"
-                    class="w-1/2 block bg-primary text-white mt-6 py-2 rounded-xl hover:opacity-80"
+                    class="w-1/2 block bg-secondary text-white mt-6 py-2 rounded-xl hover:opacity-80"
                     ><i class="fa-solid fa-envelope"></i>
                     Contact Employer</a
                 >
@@ -56,7 +49,7 @@
             </div>
         </div>
     </div>
-</div>
+</x-card>
 </div>
     
 @endsection
