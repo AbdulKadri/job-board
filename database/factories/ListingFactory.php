@@ -16,14 +16,18 @@ class ListingFactory extends Factory
      */
     public function definition(): array
     {
+
+        $tags = [ 'remote', 'full-time', 'contract', 'frontend', 'backend', 'design', 'php', 'mysql', 'laravel', 'fast-paced', 'sales', 'manager', 'director', 'heavy-lifting'];
+        $randomTags = $this->faker->randomElements($tags, 3);
+
         return [
             'title' => $this->faker->jobTitle(),
-            'tags' => $this->faker->words(3, true),
+            'tags' => implode(', ', $randomTags),
             'company' => $this->faker->company(),
             'location' => $this->faker->city(),
             'email' => $this->faker->companyEmail(),
             'website' => $this->faker->url(),
-            'description' => $this->faker->paragraphs(3, true),
+            'description' => $this->faker->realText(200),
         ];
     }
 }
