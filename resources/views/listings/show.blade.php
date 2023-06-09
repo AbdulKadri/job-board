@@ -12,7 +12,10 @@
         >
             <img
                 class="w-48 mr-6 mb-6"
-                src="{{asset('images/logo.svg')}}"
+                src="{{ $listing->logo ? 
+                    asset('storage/' . $listing->logo)
+                    : asset('images/logo.svg') 
+                }}"
                 alt=""
             />
     
@@ -24,7 +27,7 @@
                 <i class="fa-solid fa-location-dot"></i> {{ $listing->location }}
             </div>
             <div class="border border-gray-200 w-full mb-6"></div>
-            <div>
+            <div class="w-full">
                 <h3 class="text-3xl font-bold mb-4">
                     Job Description
                 </h3>
