@@ -12,12 +12,15 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
+        <script src="//unpkg.com/alpinejs" defer></script>
         @vite('resources/css/app.css')
         <title>Work Bridge | Find Jobs & Projects</title>
     </head>
     <body {{$attributes->merge(['class' => 'flex flex-col h-screen justify-between'])}}>
 
         @include('partials._header')
+
+        <x-flash-message />
 
         <main class="mb-auto">
             {{ $slot }}
