@@ -53,22 +53,26 @@
         </div>
     </x-card>
 
-    <div class="flex gap-3 justify-center">
-        <x-card class="mt-4 p-2 space-x-6 w-1/4 border-primary text-white text-center hover:opacity-80 cursor-pointer">
-            <a href="/listings/{{$listing->id}}/edit" class="text-white">
-                <i class="fa-solid fa-pencil"></i> Edit
-            </a>
-        </x-ca>
-        <x-card class="mt-4 p-2 space-x-6 w-1/4 bg-red-500 border-red-500 text-white text-center hover:opacity-80 cursor-pointer">
-            <form action="/listings/{{$listing->id}}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit">
-                    <i class="fa-solid fa-trash"></i> Delete
-                </button>
-            </form>
-        </x-card>
-    </div>
+    {{-- only allow user who created listing to see edit and delete --}}
+    @if(auth()->check() && auth()->user()->id == $listing->user_id) 
+        <div class="flex gap-3 justify-center">
+            <x-card class="mt-4 p-2 space-x-6 w-1/4 border-primary text-white text-center hover:opacity-80 cursor-pointer">
+                <a href="/listings/{{$listing->id}}/edit" class="text-white">
+                    <i class="fa-solid fa-pencil"></i> Edit
+                </a>
+            </x-card>
+
+            <x-card class="mt-4 p-2 space-x-6 w-1/4 bg-red-500 border-red-500 text-white text-center hover:opacity-80 cursor-pointer">
+                <form action="/listings/{{$listing->id}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">
+                        <i class="fa-solid fa-trash"></i> Delete
+                    </button>
+                </form>
+            </x-card>
+        </div>
+    @endif
     </div>
     
 </x-layout>
